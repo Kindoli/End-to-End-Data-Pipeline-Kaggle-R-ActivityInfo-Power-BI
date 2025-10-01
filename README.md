@@ -4,7 +4,7 @@ This guide demonstrates how to build an end-to-end pipeline that extracts datase
 # Data architecture Diagram
 ![KaggleAPI3](https://github.com/user-attachments/assets/7b27be49-db7c-40eb-b9ed-5fee57ef579b)
 
-1. Install and Configure Kaggle API
+# 1. Install and Configure Kaggle API
 Step 1: Install Kaggle API
 
 Make sure you have Python installed, then run:
@@ -12,7 +12,7 @@ Make sure you have Python installed, then run:
 pip install --upgrade kaggle
 
 
-Check the version:
+-- Check the version:
 
 kaggle --version
 
@@ -27,12 +27,12 @@ A file named kaggle.json will be downloaded.
 
 Place it in the correct directory:
 
-Windows:
+## Windows:
 
 C:\Users\<YourUser>\.kaggle\kaggle.json
 
 
-Linux/Mac:
+## Linux/Mac:
 
 ~/.kaggle/kaggle.json
 
