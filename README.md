@@ -12,7 +12,7 @@ Make sure you have Python installed, then run:
 pip install --upgrade kaggle
 
 
--- Check the version:
+--  Check the version:
 
 kaggle --version
 
