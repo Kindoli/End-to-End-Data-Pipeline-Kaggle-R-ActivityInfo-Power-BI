@@ -16,13 +16,11 @@ This guide demonstrates how to build an end-to-end pipeline that extracts datase
       kaggle --version
 
 - Step 2: Authenticate Kaggle
-
-    Log in to Kaggle
+    - Log in to Kaggle
 
 
 - Go to Account → API → Create New Token.
-
-   A file named kaggle.json will be downloaded.
+    - A file named kaggle.json will be downloaded.
 
    Place it in the correct directory:
 
@@ -36,7 +34,7 @@ C:\Users\<YourUser>\.kaggle\kaggle.json
 ~/.kaggle/kaggle.json
 
 
-Make sure the file has the correct permissions:
+ - Make sure the file has the correct permissions:
 
 chmod 600 ~/.kaggle/kaggle.json
 
@@ -44,11 +42,11 @@ chmod 600 ~/.kaggle/kaggle.json
 
 Example: Titanic dataset
 
-# Create data folder
-mkdir -p data
+### Create data folder
+ - mkdir -p data
 
-# Download dataset (zip file)
-kaggle competitions download -c titanic -p data
+### Download dataset (zip file)
+ - kaggle competitions download -c titanic -p data
 
 
 Unzip:
@@ -56,14 +54,15 @@ Unzip:
 unzip data/titanic.zip -d data/
 
 - Load Data in R for Transformation
-# Load libraries
+  
+### Load libraries
 library(dplyr)
 library(readr)
 
-# Load dataset
+### Load dataset
 titanic <- read_csv("data/train.csv")
 
-# Transform example: Rename & Clean
+### Transform example: Rename & Clean
 titanic_clean <- titanic %>%
   rename("Passenger ID" = PassengerId) %>%
   mutate(Survived = ifelse(Survived == 1, "Yes", "No"))
@@ -72,18 +71,18 @@ titanic_clean <- titanic %>%
 
 You can use the ActivityInfo API to bulk upload your transformed data.
 
-Step 1: Install R Packages
-install.packages("httr")
-install.packages("jsonlite")
+- Step 1: Install R Packages
+    - install.packages("httr")
+    - install.packages("jsonlite")
 
-Step 2: Push Data to ActivityInfo
-library(httr)
-library(jsonlite)
+- Step 2: Push Data to ActivityInfo
+    - library(httr)
+    - library(jsonlite)
 
-# Replace with your ActivityInfo API token
+### Replace with your ActivityInfo API token
 token <- "YOUR_ACTIVITYINFO_TOKEN"
 
-# Example: Upload one record
+### Example: Upload one record
 url <- "https://www.activityinfo.org/resources/form/YOUR_FORM_ID/record"
 
 payload <- list(
@@ -101,7 +100,7 @@ response <- POST(
 print(content(response))
 
 - Extract Data from ActivityInfo into R
-# Example: Fetch all records from a form
+### Example: Fetch all records from a form
 url <- "https://www.activityinfo.org/resources/form/YOUR_FORM_ID/records"
 
 records <- GET(
@@ -111,7 +110,7 @@ records <- GET(
 
 data <- fromJSON(content(records, "text"))
 
-# Convert to dataframe
+### Convert to dataframe
 activityinfo_df <- as.data.frame(data$records)
 
 - Connect R Output to Power BI
