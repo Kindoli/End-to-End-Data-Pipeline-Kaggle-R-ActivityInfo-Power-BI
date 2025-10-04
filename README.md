@@ -143,3 +143,11 @@ importRecords(formId = spotifyformid, data = spotify_churn_dataset_transformed,
 ✅ ActivityInfo API → Store structured data
 
 ✅ Power BI → Extract, analyze, and visualize
+
+## ✍️ Author 
+
+*Name*: Kindoli Edward 
+*Role*: Data Analyst | Data Engineer | BI Developer  
+*GitHub*: https://github.com/Kindoli
+*LinkedIn*: https://www.linkedin.com/in/kindoli-edward-5058544a/
+
