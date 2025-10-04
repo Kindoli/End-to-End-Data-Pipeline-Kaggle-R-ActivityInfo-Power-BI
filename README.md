@@ -22,7 +22,8 @@ Check version:
 bash
 Copy code
 kaggle --version
-Step 2: Authenticate Kaggle
+
+### Step 2: Authenticate Kaggle
 Log in to Kaggle → Go to Account → API → Create New Token.
 
 This downloads a kaggle.json file.
@@ -52,7 +53,7 @@ Copy code
 mkdir -p data
 kaggle competitions download -c titanic -p data
 unzip data/titanic.zip -d data/
-3. Transform Data in R
+### 3. Transform Data in R
 R
 Copy code
 # Load libraries
