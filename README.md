@@ -15,7 +15,7 @@ This repository demonstrates how to build a complete data pipeline by:
 ### Step 1: Install Kaggle API  
 Make sure Python is installed, then run:  
 
-```bash
+-- bash
 pip install --upgrade kaggle
 Check version:
 
@@ -30,7 +30,7 @@ This downloads a kaggle.json file.
 
 Place it in the correct directory:
 
-Windows:
+- Windows:
 
 makefile
 Copy code
@@ -45,7 +45,8 @@ Fix permissions (Linux/Mac):
 bash
 Copy code
 chmod 600 ~/.kaggle/kaggle.json
-2. Download a Dataset from Kaggle
+
+## 2. Download a Dataset from Kaggle
 Example: Titanic dataset
 
 bash
@@ -53,21 +54,22 @@ Copy code
 mkdir -p data
 kaggle competitions download -c titanic -p data
 unzip data/titanic.zip -d data/
-### 3. Transform Data in R
+
+## 3. Transform Data in R
 R
 Copy code
-# Load libraries
+- Load libraries
 library(dplyr)
 library(readr)
 
-# Load dataset
+### Load dataset
 titanic <- read_csv("data/train.csv")
 
-# Example transformation: rename + clean
+### Example transformation: rename + clean
 titanic_clean <- titanic %>%
   rename("Passenger ID" = PassengerId) %>%
   mutate(Survived = ifelse(Survived == 1, "Yes", "No"))
-4. Import Data into ActivityInfo
+## Import Data into ActivityInfo
 Install required packages:
 
 R
@@ -81,7 +83,7 @@ Copy code
 library(httr)
 library(jsonlite)
 
-# Replace with your ActivityInfo API token
+### 4. Replace with your ActivityInfo API token
 token <- "YOUR_ACTIVITYINFO_TOKEN"
 url <- "https://www.activityinfo.org/resources/form/YOUR_FORM_ID/record"
 
@@ -98,7 +100,7 @@ response <- POST(
 )
 
 print(content(response))
-5. Extract Data from ActivityInfo into R
+### 5. Extract Data from ActivityInfo into R
 R
 Copy code
 url <- "https://www.activityinfo.org/resources/form/YOUR_FORM_ID/records"
@@ -110,9 +112,9 @@ records <- GET(
 
 data <- fromJSON(content(records, "text"))
 
-# Convert to dataframe
+- Convert to dataframe
 activityinfo_df <- as.data.frame(data$records)
-6. Connect R Output to Power BI
+### 6. Connect R Output to Power BI
 Two options:
 
 Export CSV from R and import into Power BI:
@@ -123,7 +125,7 @@ write.csv(activityinfo_df, "activityinfo_data.csv", row.names = FALSE)
 Direct API Connection in Power BI:
 Use Web API connector with the ActivityInfo endpoint and provide your API token.
 
-7. Build Final Dashboards in Power BI
+### 7. Build Final Dashboards in Power BI
 Import dataset(s)
 
 Create dashboards with filters, slicers, and KPIs
