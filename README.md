@@ -125,10 +125,14 @@ spotifyformid<-"cvw96bumg6loanq3"
 importRecords(formId = spotifyformid, data = spotify_churn_dataset_transformed, 
               recordIdColumn = "RecordID")
 
-### 7. Build Final Dashboards in Power BI
+### 7. Build Spotify Dashboard in Power BI
 
+### Streaming Insights: Spotify Analysis
 
-Create dashboards with filters, slicers, and KPIs
+- Data Extracted via Kaggle API and ActivityInfo API
+
+<img width="681" height="443" alt="Spotify" src="https://github.com/user-attachments/assets/0d21f220-ea67-49c5-8762-5e19bf31dc61" />
+
 
 
 
