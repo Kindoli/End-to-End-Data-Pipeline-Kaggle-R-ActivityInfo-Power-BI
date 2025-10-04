@@ -131,9 +131,7 @@ importRecords(formId = spotifyformid, data = spotify_churn_dataset_transformed,
 
 - Data Extracted via Kaggle API and ActivityInfo API
 
-<img width="681" height="443" alt="Spotify" src="https://github.com/user-attachments/assets/0d21f220-ea67-49c5-8762-5e19bf31dc61" />
-
-
+![Picture2](https://github.com/user-attachments/assets/9e39b7bd-a549-4d2b-9321-824fbc527d55)
 
 
 ## 📌 Summary
