@@ -20,7 +20,7 @@ pip install --upgrade kaggle
 Check version:
 
 bash
-Copy code
+Check kaggle installed version
 kaggle --version
 
 ### Step 2: Authenticate Kaggle
@@ -33,106 +33,84 @@ Place it in the correct directory:
 - Windows:
 
 makefile
-Copy code
 C:\Users\<YourUser>\.kaggle\kaggle.json
 Linux/Mac:
 
 bash
-Copy code
 ~/.kaggle/kaggle.json
-Fix permissions (Linux/Mac):
 
-bash
-Copy code
-chmod 600 ~/.kaggle/kaggle.json
+- Creates a folder data in R
+
+dir.create("./data", showWarnings = FALSE)
 
 ## 2. Download a Dataset from Kaggle
-Example: Titanic dataset
+- spotify-dataset
 
-bash
-Copy code
-mkdir -p data
-kaggle competitions download -c titanic -p data
-unzip data/titanic.zip -d data/
+- This command will download the dataset as a ZIP file into the ./data folder.
 
-## 3. Transform Data in R
-R
-Copy code
-- Load libraries
-library(dplyr)
-library(readr)
+system("kaggle datasets download -d nabihazahid/spotify-dataset-for-churn-analysis -p ./data")
 
-### Load dataset
-titanic <- read_csv("data/train.csv")
+- This will extract the contents of the ZIP file into the ./data folder.
 
-### Example transformation: rename + clean
-titanic_clean <- titanic %>%
-  rename("Passenger ID" = PassengerId) %>%
-  mutate(Survived = ifelse(Survived == 1, "Yes", "No"))
-## Import Data into ActivityInfo
-Install required packages:
+unzip("./data/spotify-dataset-for-churn-analysis.zip", exdir = "./data")
 
-R
-Copy code
-install.packages("httr")
-install.packages("jsonlite")
-Example API request in R:
+### Load R packages to read and transform the sportify dataset
+- library(tidyverse)
+- library(activityinfo)
+- source("SpotifyAPI.R")
+- library(readr)
 
-R
-Copy code
-library(httr)
-library(jsonlite)
 
-### 4. Replace with your ActivityInfo API token
-token <- "YOUR_ACTIVITYINFO_TOKEN"
-url <- "https://www.activityinfo.org/resources/form/YOUR_FORM_ID/record"
+spotify_churn_dataset <- read_csv("spotify_churn_dataset.csv")
 
-payload <- list(
-  field1 = "Example Value",
-  field2 = 123
-)
+#view the spotify churn dataset in R
+View(spotify_churn_dataset)
 
-response <- POST(
-  url,
-  add_headers(Authorization = paste("Bearer", token)),
-  body = toJSON(payload, auto_unbox = TRUE),
-  encode = "json"
-)
+#view the column names in R
+colnames(spotify_churn_dataset)
 
-print(content(response))
-### 5. Extract Data from ActivityInfo into R
-R
-Copy code
-url <- "https://www.activityinfo.org/resources/form/YOUR_FORM_ID/records"
+#View the first 5 rows in R
 
-records <- GET(
-  url,
-  add_headers(Authorization = paste("Bearer", token))
-)
+head(spotify_churn_dataset)
 
-data <- fromJSON(content(records, "text"))
+## 3. Transform Sportify Dataset in R
 
-- Convert to dataframe
-activityinfo_df <- as.data.frame(data$records)
-### 6. Connect R Output to Power BI
-Two options:
+spotify_churn_dataset_transformed <- spotify_churn_dataset |>
+  rename("User ID" = user_id,
+  "Gender" = gender,
+  "Age" = age,
+  "country" = country,
+  "Subscription Type" = subscription_type,
+  "Listening Time" = listening_time,
+  "Songs Played Per Day" = songs_played_per_day,
+  "Skip Rate" = skip_rate,
+  "Device Type" = device_type,
+  "Ads Listened Per Week" = ads_listened_per_week,
+  "Offline Listening" = offline_listening,
+  "Is Churned" = is_churned)|>
+  mutate(`Is Churned` = ifelse(`Is Churned` == 1, "Yes", "No"))|>
+  mutate(`Offline Listening` = ifelse(`Offline Listening` == 1, "Yes", "No"))
 
-Export CSV from R and import into Power BI:
+### Indentify the database to import the dataset in ActivityInfo 
+databaseId <- 'caqvh9omg6lmiip2'
 
-R
-Copy code
-write.csv(activityinfo_df, "activityinfo_data.csv", row.names = FALSE)
-Direct API Connection in Power BI:
-Use Web API connector with the ActivityInfo endpoint and provide your API token.
+### Identify the formid to load the spotify dataset in ActivityInfo
+spotifyformid<-"cvw96bumg6loanq3"
+
+
+### Start the importing process into ActivityInfo
+
+importRecords(formId = spotifyformid, data = spotify_churn_dataset_transformed, 
+              recordIdColumn = "RecordID")
 
 ### 7. Build Final Dashboards in Power BI
-Import dataset(s)
+
 
 Create dashboards with filters, slicers, and KPIs
 
-Set scheduled refresh for automated updates
 
-# 📌 Summary
+
+## 📌 Summary
 
 ✅ Kaggle API → Download datasets
 
