@@ -76,8 +76,11 @@ head(spotify_churn_dataset)
 ## 3. Transform Sportify Dataset in R
 
 spotify_churn_dataset_transformed <- spotify_churn_dataset |>
+
   rename("User ID" = user_id,
+  
   "Gender" = gender,
+  
   "Age" = age,
   "country" = country,
   "Subscription Type" = subscription_type,
