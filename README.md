@@ -1,4 +1,5 @@
 # End-to-End-Data-Pipeline-Kaggle-R-ActivityInfo-Power-BI
+
 This repository demonstrates how to build a complete data pipeline by:  
 1. Extracting datasets from **Kaggle** using the Kaggle API.  
 2. Transforming data in **R**.  
@@ -46,7 +47,7 @@ bash
 dir.create("./data", showWarnings = FALSE)
 
 ## 2. Download a Dataset from Kaggle
-
+ 
 - spotify-dataset
 
 - This command will download the dataset as a ZIP file into the ./data folder.
