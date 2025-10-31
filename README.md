@@ -42,11 +42,11 @@ Linux/Mac:
 - bash
 ~/.kaggle/kaggle.json
 
-- Creates a folder data in R
+- Creates a folder data in R to store the output
 
 dir.create("./data", showWarnings = FALSE)
 
-## 2. Download a Dataset from Kaggle
+## 2. Download the Spotify dataset Dataset from Kaggle
  
 - Spotify-dataset
 
