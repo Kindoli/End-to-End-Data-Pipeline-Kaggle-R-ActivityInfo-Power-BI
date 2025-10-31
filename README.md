@@ -36,10 +36,10 @@ Place it in the correct directory:
 - Windows:
 
 makefile
-C:\Users\<YourUser>\.kaggle\kaggle.json
+C:\Users\User\.kaggle\kaggle.json
 Linux/Mac:
 
-bash
+- bash
 ~/.kaggle/kaggle.json
 
 - Creates a folder data in R
@@ -48,9 +48,9 @@ dir.create("./data", showWarnings = FALSE)
 
 ## 2. Download a Dataset from Kaggle
  
-- spotify-dataset
+- Spotify-dataset
 
-- This command will download the dataset as a ZIP file into the ./data folder.
+- This command will download the dataset as a ZIP file into the ./data folder
 
 system("kaggle datasets download -d nabihazahid/spotify-dataset-for-churn-analysis -p ./data")
 
@@ -80,7 +80,7 @@ colnames(spotify_churn_dataset)
 
 head(spotify_churn_dataset)
 
-## 3. Transform Sportify Dataset in R
+## 3. Transforming Sportify Dataset in R
 
 spotify_churn_dataset_transformed <- spotify_churn_dataset |>
 
