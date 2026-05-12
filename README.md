@@ -135,17 +135,17 @@ importRecords(formId = spotifyformid, data = spotify_churn_dataset_transformed,
 ![Picture2](https://github.com/user-attachments/assets/9e39b7bd-a549-4d2b-9321-824fbc527d55)
 
 
-## 📌 Summary
+## Summary
 
-✅ Kaggle API → Download datasets
+- Kaggle API → Download datasets
 
-✅ R → Clean and transform data
+- R → Clean and transform data
 
-✅ ActivityInfo API → Store structured data
+- ActivityInfo API → Store structured data
 
-✅ Power BI → Extract, analyze, and visualize
+ - Power BI → Extract, analyze, and visualize
 
-## ✍️ Author 
+## Author 
 
 *Name*: Kindoli Edward 
 *Role*: Data Analyst | Data Engineer | BI Developer  
